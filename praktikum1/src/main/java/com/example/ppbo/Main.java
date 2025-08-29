@@ -30,9 +30,8 @@ public class Main {
         System.out.println("Alamat                      : " + alamat);
         System.out.println("Umur                        : " + umur);
         System.out.println("Golongan Darah              : " + GOLDARAH);
-        for (int i = 0; i < ips.length; i++) {
-            System.out.println("IP Semester " + (i + 1) + " (array)       : " + ips[i]);
-        }
+        System.out.println("IP Semester 1               : " + ips[0]);
+        System.out.println("IP Semester 2               : " + ips[1]);
         System.out.println("IP Semester 1 (konversi byte): " + ipSemester1Byte);
     }
 }
