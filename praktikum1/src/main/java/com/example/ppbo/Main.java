@@ -9,7 +9,7 @@ package com.example.ppbo;
  */
 public class Main {
     // konstanta golongan darah
-    public static final String GOLDARAH = "A";
+    public static final String GOLONGAN_DARAH = "A";
 
     public static void main(String[] args) {
         // Biodata dasar
@@ -29,7 +29,7 @@ public class Main {
         System.out.println("NIM                         : " + nim);
         System.out.println("Alamat                      : " + alamat);
         System.out.println("Umur                        : " + umur);
-        System.out.println("Golongan Darah              : " + GOLDARAH);
+        System.out.println("Golongan Darah              : " + GOLONGAN_DARAH);
         System.out.println("IP Semester 1               : " + ips[0]);
         System.out.println("IP Semester 2               : " + ips[1]);
         System.out.println("IP Semester 1 (konversi byte): " + ipSemester1Byte);
