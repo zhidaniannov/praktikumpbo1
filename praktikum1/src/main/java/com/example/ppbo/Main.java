@@ -13,7 +13,7 @@ public class Main {
         int umur = 19;
 
         // IP tiap semester disimpan dalam array (semester 1 dan 2)
-        double[] ips = {3.84, 3.98};
+        double[] ips = {3.97, 3.98};
 
         // Konversi IP semester 1 ke tipe byte
         byte ipSemester1Byte = (byte) ips[0];
