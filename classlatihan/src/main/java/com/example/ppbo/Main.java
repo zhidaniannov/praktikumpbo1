@@ -7,11 +7,11 @@ public class Main {
         lagu1.tampilkanInfo();
 
         // Object 2 dengan parameter
-        Music lagu2 = new Music("Lagu Cinta", "Artis A", "Pop");
+        Music lagu2 = new Music("Thinking Out Loud", "Ed Sheeran", "Pop");
         lagu2.tampilkanInfo(true);
 
         // Object 3 dengan parameter
-        Music lagu3 = new Music("Lagu Bahagia", "Artis B", "Jazz");
+        Music lagu3 = new Music("The Scientist", "Coldplay", "Alternative Rock");
         lagu3.tampilkanInfo(false);
     }
 }
