@@ -4,40 +4,53 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Player player1 = new Player("Hero", 100, 10, 0);
-        Goblin goblin1 = new Goblin("Goblin", 30, 5, 20, 3);
 
-        System.out.println("Player Stats:");
-        System.out.println("Player Name: " + player1.namaPlayer);
-        System.out.println("Player Health: " + player1.healthPoint);
-        System.out.println("Player Attack Power: " + player1.atkPower);
-        System.out.println("Player Experience: " + player1.experiencePoint);
-        System.out.println("=========================================");
-        
-        System.out.println("Enemy Stats:");
-        System.out.println("\nEnemy Name: " + goblin1.namaEnemy);
-        System.out.println("Enemy Health: " + goblin1.healthPoint);
-        System.out.println("Enemy Attack Power: " + goblin1.atkPower);
-        System.out.println("Enemy Experience: " + goblin1.experiencePoint);
-        System.out.println("\nEnemy Special Move Power: " + goblin1.specialMove);
-        System.out.println("=========================================");
+        Player player = new Player("Aya", 1500, 20, 0);
+        Boss boss = new Boss("Bos", 1000, 10, 25);
 
-        System.out.println("Start playing");
-        System.out.println("1. Attack");
-        System.out.println("2. Heal");
-        System.out.println("3. End game...");
-        System.out.println("==================");
-        System.out.print("Choose: ");
-        int choice = scanner.nextInt();
-        scanner.nextLine();
+        System.out.println("=== RPG TURN-BASED GAME ===");
+        System.out.println(player.getName() + " vs " + boss.getName());
+        System.out.println("============================");
 
-        switch (choice) {
-            case 1:
-                System.out.println("Damage " + player1.atkPower);
-                break;
-        
-            default:
-                break;
+        while (!player.isDead() && !boss.isDead()) {
+            System.out.println("\nAksi:");
+            System.out.println("1. Serang");
+            System.out.println("2. Heal");
+            System.out.println("3. Keluar Game");
+            System.out.print("Pilih: ");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    player.attack(boss);
+                    if (!boss.isDead()) {
+                        boss.attack(player);
+                    } else {
+                        System.out.println(boss.getName() + " dikalahkan!");
+                        player.gainExp(boss.getExperienceReward());
+                    }
+                    break;
+
+                case 2:
+                    player.heal();
+                    boss.attack(player);
+                    break;
+
+                case 3:
+                    System.out.println("Game berakhir!");
+                    return;
+
+                default:
+                    System.out.println("Pilihan tidak valid!");
+            }
         }
+
+        if (player.isDead()) {
+            System.out.println("\n=== Kamu Kalah! ===");
+        } else {
+            System.out.println("\n=== Kamu Menang! ===");
+        }
+
+        scanner.close();
     }
 }

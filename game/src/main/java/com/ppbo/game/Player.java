@@ -1,10 +1,10 @@
 package com.ppbo.game;
 
-public class Player {
-    String namaPlayer;
-    int healthPoint;
-    int atkPower;
-    int experiencePoint;
+public class Player implements Character {
+    protected String namaPlayer;
+    protected int healthPoint;
+    protected int atkPower;
+    protected int experiencePoint;
 
     public Player(String namaPlayer, int healthPoint, int atkPower, int experiencePoint) {
         this.namaPlayer = namaPlayer;
@@ -13,16 +13,35 @@ public class Player {
         this.experiencePoint = experiencePoint;
     }
 
-    public int playerAttack(){
-        return atkPower = 10;
+    @Override
+    public void attack(Character target) {
+        System.out.println(namaPlayer + " menyerang " + target.getName() + " dengan kekuatan " + atkPower);
+        target.takeDamage(atkPower);
     }
 
-    public void isDead(){
-        if (healthPoint <= 0){
-            System.out.println(namaPlayer + " is dead");
-        } else {
-            System.out.println(namaPlayer + " is still alive");
-        }
+    @Override
+    public void takeDamage(int damage) {
+        healthPoint -= damage;
+        System.out.println(namaPlayer + " menerima " + damage + " damage. Sisa HP: " + healthPoint);
     }
 
+    @Override
+    public boolean isDead() {
+        return healthPoint <= 0;
+    }
+
+    @Override
+    public String getName() {
+        return namaPlayer;
+    }
+
+    public void heal() {
+        healthPoint += 15;
+        System.out.println(namaPlayer + " menggunakan potion dan memulihkan 15 HP. Total HP: " + healthPoint);
+    }
+
+    public void gainExp(int exp) {
+        experiencePoint += exp;
+        System.out.println(namaPlayer + " mendapatkan " + exp + " EXP. Total EXP: " + experiencePoint);
+    }
 }

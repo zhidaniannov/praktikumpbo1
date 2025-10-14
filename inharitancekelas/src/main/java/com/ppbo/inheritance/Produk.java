@@ -1,6 +1,7 @@
 package com.ppbo.inheritance;
 
-public class Produk {
+public class Produk implements HargaAkhir {
+
     protected String nama;
     protected int harga;
 
@@ -10,7 +11,17 @@ public class Produk {
     }
 
     public void tampilkanInfo() {
-        System.out.println("Nama produk : " + nama);
-        System.out.println("Harga satuan: " + harga);
+        System.out.println("Nama: " + nama);
+        System.out.println("Harga: " + harga);
+    }
+
+    public double hitungPajak(){
+        return harga * 0.05;
+    }
+
+    @Override
+    public double hitungHarga(){
+        return harga * 1.01;
     }
 }
+
