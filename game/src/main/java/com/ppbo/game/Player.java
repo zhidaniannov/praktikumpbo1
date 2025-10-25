@@ -4,19 +4,22 @@ public class Player implements Character {
     protected String namaPlayer;
     protected int healthPoint;
     protected int atkPower;
-    protected int experiencePoint;
 
-    public Player(String namaPlayer, int healthPoint, int atkPower, int experiencePoint) {
+    public Player(String namaPlayer, int healthPoint, int atkPower) {
         this.namaPlayer = namaPlayer;
         this.healthPoint = healthPoint;
         this.atkPower = atkPower;
-        this.experiencePoint = experiencePoint;
     }
 
     @Override
     public void attack(Character target) {
-        System.out.println(namaPlayer + " menyerang " + target.getName() + " dengan kekuatan " + atkPower);
-        target.takeDamage(atkPower);
+        if (Math.random() < 0.5) { // 80% chance to hit
+            System.out.println(namaPlayer + " menyerang " + target.getName() + " dengan critical " + (atkPower * 2));
+            target.takeDamage(atkPower * 2);
+        } else {
+            System.out.println(namaPlayer + " menyerang " + target.getName() + " dengan kekuatan " + atkPower);
+            target.takeDamage(atkPower);
+        }
     }
 
     @Override
@@ -38,10 +41,5 @@ public class Player implements Character {
     public void heal() {
         healthPoint += 15;
         System.out.println(namaPlayer + " menggunakan potion dan memulihkan 15 HP. Total HP: " + healthPoint);
-    }
-
-    public void gainExp(int exp) {
-        experiencePoint += exp;
-        System.out.println(namaPlayer + " mendapatkan " + exp + " EXP. Total EXP: " + experiencePoint);
     }
 }
