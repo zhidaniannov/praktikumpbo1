@@ -43,7 +43,6 @@ public class Mahasiswa {
     public static boolean updateByNim(String oldNim, Mahasiswa updated) {
         for (int i = 0; i < mahasiswas.size(); i++) {
             if (mahasiswas.get(i).nim.equals(oldNim)) {
-                // Jika NIM berubah, pastikan tidak bentrok dengan data lain
                 if (!oldNim.equals(updated.nim) && existsByNim(updated.nim))
                     return false;
                 mahasiswas.set(i, updated);

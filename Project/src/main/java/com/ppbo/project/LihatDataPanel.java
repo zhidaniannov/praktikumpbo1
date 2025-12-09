@@ -7,7 +7,7 @@ public class LihatDataPanel extends javax.swing.JPanel {
 
     public LihatDataPanel() {
         initComponents();
-        loadData(); // tetap otomatis load saat dibuka
+        loadData();
     }
 
     private void loadData() {
@@ -50,7 +50,7 @@ public class LihatDataPanel extends javax.swing.JPanel {
         if (c != JOptionPane.YES_OPTION) return;
 
         if (Mahasiswa.deleteByNim(nim)) {
-            loadData(); // tetap refresh tabel setelah delete
+            loadData();
             JOptionPane.showMessageDialog(this, "Data terhapus.");
         } else {
             JOptionPane.showMessageDialog(this, "Gagal menghapus data.");
@@ -127,7 +127,6 @@ public class LihatDataPanel extends javax.swing.JPanel {
         );
     }
 
-    // Variables (tanpa refreshBtn)
     private javax.swing.JPanel buttonPanel;
     private javax.swing.JTable dataMahasiswaTable;
     private javax.swing.JButton deleteBtn;

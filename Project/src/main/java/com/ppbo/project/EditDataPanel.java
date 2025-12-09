@@ -8,27 +8,24 @@ import javax.swing.SwingUtilities;
 public class EditDataPanel extends javax.swing.JPanel {
 
         private ButtonGroup genderGroup;
-        private final String oldNim; // NIM lama yang sedang diedit
+        private final String oldNim;
 
         public EditDataPanel(Mahasiswa data) {
-                // jaga-jaga
+                
                 if (data == null)
                         throw new IllegalArgumentException("Data mahasiswa tidak boleh null");
                 this.oldNim = data.getNim();
 
                 initComponents();
 
-                // group gender
-                genderGroup = new ButtonGroup();
+                                genderGroup = new ButtonGroup();
                 genderGroup.add(lakiLakiRadBtn);
                 genderGroup.add(perempuanRadBtn);
 
-                // pilihan prodi
                 prodiComboBox.setModel(new DefaultComboBoxModel<>(new String[] {
                                 "— Pilih Prodi —", "Teknik Informatika", "Sistem Informasi", "Teknik Elektro"
                 }));
 
-                // PREFILL dari data lama
                 namaTextField.setText(data.getNama());
                 nimTextField.setText(data.getNim());
                 prodiComboBox.setSelectedItem(data.getProdi() != null ? data.getProdi() : "— Pilih Prodi —");
@@ -214,7 +211,6 @@ public class EditDataPanel extends javax.swing.JPanel {
                 String jenisKelamin = lakiLakiRadBtn.isSelected() ? "Laki-laki" : "Perempuan";
                 boolean isActive = statusCheckBox.isSelected();
 
-                // Kalau NIM berubah, pastikan tidak bentrok
                 if (!oldNim.equals(nim) && Mahasiswa.existsByNim(nim)) {
                         JOptionPane.showMessageDialog(this, "NIM sudah terdaftar.");
                         return;
